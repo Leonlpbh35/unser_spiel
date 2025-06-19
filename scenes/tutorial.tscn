@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=4 uid="uid://bbey265yqm2on"]
+
+[ext_resource type="Texture2D" uid="uid://er1jo82x87eq" path="res://fertig/Grass&SteinigesGrass&WegBlöcke.png" id="1_8ho6b"]
+[ext_resource type="PackedScene" uid="uid://wg0fkltts1vi" path="res://scenes/spieler.tscn" id="1_c13y7"]
+[ext_resource type="Script" uid="uid://bqgcnqp20hwdp" path="res://scripts/node_2d.gd" id="3_ph3nu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ph3nu"]
+texture = ExtResource("1_8ho6b")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4kmhl"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_ph3nu")
+
+[node name="tutorial" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.910171, 1.04012)
+tile_map_data = PackedByteArray("AAAAAP//AAABAAEAAAD/////AAACAAEAAAD//wAAAAABAAEAAAAAAAAAAAACAAEAAAD+/wAAAAACAAAAAAD+////AAACAAAAAAD+//7/AAACAAAAAAD///7/AAACAAAAAAAAAP7/AAACAAAAAAABAP7/AAACAAAAAAACAP7/AAACAAAAAAACAP//AAACAAAAAAABAP//AAACAAAAAAABAAAAAAACAAAAAAABAAEAAAACAAAAAAAAAAEAAAACAAAAAAD//wEAAAACAAAAAAD+/wEAAAACAAAAAAD9/wEAAAACAAAAAAACAAEAAAACAAAAAAACAAAAAAACAAAAAAD9//7/AAACAAAAAAD9////AAACAAAAAAD9/wAAAAACAAAAAAD9//3/AAACAAAAAAD+//3/AAACAAAAAAD///3/AAACAAAAAAAAAP3/AAACAAAAAAABAP3/AAACAAAAAAACAP3/AAACAAAAAAACAAIAAAACAAAAAAABAAIAAAACAAAAAAAAAAIAAAACAAAAAAD//wIAAAACAAAAAAD+/wIAAAACAAAAAAD9/wIAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_4kmhl")
+
+[node name="Spieler" parent="." instance=ExtResource("1_c13y7")]
+
+[node name="Camera2D" type="Camera2D" parent="Spieler"]
+zoom = Vector2(3, 3)
+
+[node name="Node2D" type="Node2D" parent="Spieler"]
+script = ExtResource("3_ph3nu")
+
+[node name="text" type="Label" parent="Spieler/Node2D"]
+offset_left = -187.0
+offset_top = -107.0
+offset_right = 187.0
+offset_bottom = -84.0
+text = "Drücke WASD oder die Pfeiltasten Zum Bewegen"
